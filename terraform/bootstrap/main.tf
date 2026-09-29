@@ -114,16 +114,17 @@ data "aws_iam_policy_document" "github_actions_permissions" {
   statement {
     sid = "ManageLambdaFunction"
     actions = [
-      "lambda:CreateFunction",
-      "lambda:DeleteFunction",
-      "lambda:GetFunction",
-      "lambda:GetFunctionConfiguration",
-      "lambda:UpdateFunctionCode",
-      "lambda:UpdateFunctionConfiguration",
-      "lambda:ListVersionsByFunction",
-      "lambda:TagResource",
-      "lambda:UntagResource",
-      "lambda:ListTags",
+    "lambda:CreateFunction",
+    "lambda:DeleteFunction",
+    "lambda:GetFunction",
+    "lambda:GetFunctionConfiguration",
+    "lambda:GetFunctionCodeSigningConfig",
+    "lambda:UpdateFunctionCode",
+    "lambda:UpdateFunctionConfiguration",
+    "lambda:ListVersionsByFunction",
+    "lambda:TagResource",
+    "lambda:UntagResource",
+    "lambda:ListTags",
     ]
     resources = [
       "arn:aws:lambda:eu-west-2:${data.aws_caller_identity.current.account_id}:function:zaki-streaming-pipeline-*",
