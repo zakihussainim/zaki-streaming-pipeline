@@ -230,8 +230,20 @@ data "aws_iam_policy_document" "github_actions_permissions" {
       "redshift-serverless:ListTagsForResource",
     ]
     resources = ["*"]
+    }
+    statement {
+    sid = "ReadDefaultVPCNetworking"
+    actions = [
+      "ec2:DescribeVpcs",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+    ]
+    resources = ["*"]
+  
   }
 }
+
+
 
 resource "aws_iam_role_policy" "github_actions_permissions" {
   name   = "zaki-streaming-pipeline-github-actions-permissions"
