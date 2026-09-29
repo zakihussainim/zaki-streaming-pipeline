@@ -134,11 +134,12 @@ data "aws_iam_policy_document" "github_actions_permissions" {
   statement {
     sid = "ManageLambdaEventSourceMapping"
     actions = [
-      "lambda:CreateEventSourceMapping",
-      "lambda:GetEventSourceMapping",
-      "lambda:UpdateEventSourceMapping",
-      "lambda:DeleteEventSourceMapping",
-      "lambda:ListEventSourceMappings",
+    "lambda:CreateEventSourceMapping",
+    "lambda:GetEventSourceMapping",
+    "lambda:UpdateEventSourceMapping",
+    "lambda:DeleteEventSourceMapping",
+    "lambda:ListEventSourceMappings",
+    "lambda:ListTags",
     ]
     resources = ["*"]
   }
