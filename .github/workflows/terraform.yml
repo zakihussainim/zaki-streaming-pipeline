@@ -102,8 +102,7 @@ jobs:
         working-directory: terraform/envs/dev
         run: terraform apply -auto-approve
 
-
-         apply-prod:
+  apply-prod:
     needs: apply-dev
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
