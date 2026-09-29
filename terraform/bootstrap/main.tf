@@ -237,6 +237,7 @@ data "aws_iam_policy_document" "github_actions_permissions" {
       "ec2:DescribeVpcs",
       "ec2:DescribeSubnets",
       "ec2:DescribeSecurityGroups",
+      "ec2:DescribeVpcAttribute",
     ]
     resources = ["*"]
 
