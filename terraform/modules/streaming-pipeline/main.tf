@@ -15,7 +15,7 @@ terraform {
 data "aws_caller_identity" "current" {}
 
 resource "aws_kinesis_stream" "sensor_events" {
-  name        = "${var.project_prefix}-sensor-events"
+  name = "${var.project_prefix}-sensor-events"
   stream_mode_details {
     stream_mode = "ON_DEMAND"
   }
@@ -133,13 +133,13 @@ resource "aws_lambda_event_source_mapping" "kinesis_to_lambda" {
 resource "aws_cloudwatch_metric_alarm" "consumer_lag" {
   alarm_name          = "${var.project_prefix}-consumer-lag"
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods   = 1
-  metric_name          = "GetRecords.IteratorAgeMilliseconds"
-  namespace             = "AWS/Kinesis"
-  period                = 300
-  statistic             = "Maximum"
-  threshold             = 60000
-  alarm_description     = "Lambda consumer is falling behind the Kinesis stream by more than 60 seconds"
+  evaluation_periods  = 1
+  metric_name         = "GetRecords.IteratorAgeMilliseconds"
+  namespace           = "AWS/Kinesis"
+  period              = 300
+  statistic           = "Maximum"
+  threshold           = 60000
+  alarm_description   = "Lambda consumer is falling behind the Kinesis stream by more than 60 seconds"
 
   dimensions = {
     StreamName = aws_kinesis_stream.sensor_events.name
@@ -149,13 +149,13 @@ resource "aws_cloudwatch_metric_alarm" "consumer_lag" {
 resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
   alarm_name          = "${var.project_prefix}-lambda-errors"
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods   = 1
-  metric_name          = "Errors"
-  namespace             = "AWS/Lambda"
-  period                = 300
-  statistic             = "Sum"
-  threshold             = 0
-  alarm_description     = "The sensor readings Lambda has thrown at least one error in the last 5 minutes"
+  evaluation_periods  = 1
+  metric_name         = "Errors"
+  namespace           = "AWS/Lambda"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 0
+  alarm_description   = "The sensor readings Lambda has thrown at least one error in the last 5 minutes"
 
   dimensions = {
     FunctionName = aws_lambda_function.process_sensor_readings.function_name

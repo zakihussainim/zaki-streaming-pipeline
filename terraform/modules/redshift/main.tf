@@ -32,15 +32,15 @@ locals {
 }
 
 resource "aws_redshiftserverless_namespace" "this" {
-  namespace_name         = "${var.project_prefix}-namespace"
-  db_name                = var.database_name
-  manage_admin_password  = true
+  namespace_name        = "${var.project_prefix}-namespace"
+  db_name               = var.database_name
+  manage_admin_password = true
 }
 
 resource "aws_redshiftserverless_workgroup" "this" {
-  namespace_name       = aws_redshiftserverless_namespace.this.namespace_name
-  workgroup_name        = "${var.project_prefix}-workgroup"
-  base_capacity          = 8
-  subnet_ids             = local.redshift_subnet_ids
-  publicly_accessible    = false
+  namespace_name      = aws_redshiftserverless_namespace.this.namespace_name
+  workgroup_name      = "${var.project_prefix}-workgroup"
+  base_capacity       = 8
+  subnet_ids          = local.redshift_subnet_ids
+  publicly_accessible = false
 }

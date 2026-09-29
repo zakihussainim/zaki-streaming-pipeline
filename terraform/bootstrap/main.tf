@@ -230,8 +230,8 @@ data "aws_iam_policy_document" "github_actions_permissions" {
       "redshift-serverless:ListTagsForResource",
     ]
     resources = ["*"]
-    }
-    statement {
+  }
+  statement {
     sid = "ReadDefaultVPCNetworking"
     actions = [
       "ec2:DescribeVpcs",
@@ -239,7 +239,7 @@ data "aws_iam_policy_document" "github_actions_permissions" {
       "ec2:DescribeSecurityGroups",
     ]
     resources = ["*"]
-  
+
   }
 }
 
